@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- [if It IE 9]
+      <script src="js/html5shiv.js"></script>
+    <![endif] -->
+    <!-- <script src="js/jquery-3.5.1.js.css"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+      $(document).mousemove(function(e){
+        $('.pointer').css({ left: e.pageX, top: e.pageY });
+      });
+    </script>
+    <!-- <script>
+      $(function(){
+        //상위 요소 div의 height를 추출해서 iframe의 height로 삼;
+
+        var w1h2 = $("iframe").parent().parent().height();
+        console.log(w1h2);
+
+        var w1h = $("iframe").parent().height();
+        console.log(w1h);
+
+
+        $('iframe').attr(
+          {
+            "height" : w1h2
+          }
+        )
+
+        var w1hf = $("iframe").height();
+        console.log(w1hf);
+      });
+    </script> -->
+    <!-- <script src="sparklecursor.js"></script> -->
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        border: 2.5px solid black;
+        width: 40%;
+        align: center;
+        margin: auto;
+        margin-top:100px;
+        height: minmax(1fr,2fr);
+      }
+      h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:inherit;
+        margin: auto;
+        background-color: black;
+        color: white;
+        padding: 4px;
+        cursor: move;
+      }
+      .Note {
+        padding: 15px;
+        padding-left:20px;
+  /* font-family: Arial, Helvetica, sans-serif; */
+      }
+      h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: italic;
+        font-size: x-large;
+        font-weight:lighter;
+        margin: 0;
+        padding-bottom:6px;
+      }
+      li {
+        border: 1px solid black;
+        margin:6px;
+        margin-left:0px;
+        padding:2px;
+        display: table;
+      }
+      .narrow {
+           width: 0;
+           height: 0;
+           border: 15px solid transparent;
+           border-bottom: 70px solid black;
+           position: relative;
+           top: -50px;
+         }
+         .narrow:after {
+           content: '';
+           position: absolute;
+           left: -15px;
+           top: 70px;
+           width: 0;
+           height: 0;
+           border: 15px solid transparent;
+           border-top: 70px solid black;
+         }
+         .diamond-vertical {
+           position: relative;
+           display: block;
+
+         }
+         .diamond-horizontal {
+           transform: rotate(90deg);
+           transform-origin: ;
+           display: block;
+           position: absolute;
+           margin-top: -95px;
+           margin-left: -5px;
+         }
+         #diho .narrow {
+           transform: scale(0.9, 0.8);
+           top: -40px;
+
+         }
+         #diamond-1 {
+           position: relative;
+         }
+         #diamond-2 {
+           position: absolute;
+           transform: rotate(45deg) scale(0.7);
+            margin-top: -90.5px;
+            margin-left: -5px;
+         }
+         #diamond-2 .narrow {
+
+         }
+         #diamond-full {
+            transform: scale(0.13);
+          }
+        .pointer{
+
+        }
+
+
+      #mdiv {
+        width: 15px;
+        height: 15px;
+        background-color: black;
+      }
+
+      .mdiv {
+        height: 16px;
+        width: 2px;
+        margin-left: 12px;
+        background-color: white;
+        transform: rotate(45deg);
+        Z-index: 1;
+      }
+
+      .md {
+        height: 16px;
+        width: 2px;
+        background-color: white;
+        transform: rotate(90deg);
+        Z-index: 2;
+      }
+      .forbutton {
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+      }
+      #mdiv {
+        justify-self: end;
+        padding-right:4px;
+        cursor: pointer;
+      }
+      #space {
+        padding-top:20px;
+      }
+      #window1 {
+        position: absolute;
+        overflow: hidden;
+        z-index: 1;
+        width: 500px;
+        height: 400px;
+        top: 200px;
+        left: 700px;
+        border: 2.5px solid black;
+        background-color: white;
+        resize: vertical;
+        min-height: 25px;
+      }
+    iframe {
+       height:100%;
+       overflow:auto;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style2.css">
+  </head>
+  <body>
+    <div class="pointer">
+      <div id="diamond-full">
+        <div id= "diamond-1" >
+          <div class="diamond-vertical">
+            <div class="narrow"></div>
+            <div></div>
+          </div>
+          <div class="diamond-horizontal" id="diho">
+            <div class="narrow"></div>
+            <div></div>
+          </div>
+        </div>
+        <div id= "diamond-2" >
+          <div class="diamond-vertical">
+            <div class="narrow"></div>
+            <div></div>
+          </div>
+          <div class="diamond-horizontal">
+            <div class="narrow"></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = "window" id="window0" >
+      <div>
+        <h1>
+          <div class="forbutton">
+            Pratt Mews
+            <div id="mdiv">
+              <div class="mdiv">
+                <div class="md"></div>
+              </div>
+            </div>
+          </div>
+        </h1>
+      </div>
+      <div class="Note">
+        <h2>FILE BOXES</h2>
+          <li onclick="$('#window1').toggle()">Collections, descriptions and catalogs</li>
+          <li>Structures</li>
+        <h2 id="space">NOTE CARDS</h2>
+          <li>Libraries as places, for exploration etc.</li>
+          <li>Figure 1, Floor plan</li>
+          <li>Figure 2, Types of literature</li>
+          <li>Sturctured collections</li>
+          <li>Libraries and bookshops</li>
+      </div>
+    </div>
+    <div id="window1">
+      <div class="window" id="window1header">
+        <h1>
+          <div class="forbutton">
+            Information
+            <div id="mdiv" class="close" onclick="$('#window1').hide();">
+              <div class="mdiv">
+                <div class="md"></div>
+              </div>
+            </div>
+          </div>
+        </h1>
+      </div>
+      <div class="addNote">
+        <iframe src="/Users/Yewon/Documents/web/E_1.html" width="500px" height="100%" overflow="auto" frameborder="0" allowfullscreen=""></iframe>
+      </div>
+    </div>
+  </div>
+  <script>
+
+        // Make the DIV element draggable:
+    dragElement(document.getElementById("window1"));
+
+    function dragElement(elmnt) {
+      var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+      if (document.getElementById(elmnt.id + "header")) {
+        // if present, the header is where you move the DIV from:
+        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+      } else {
+        // otherwise, move the DIV from anywhere inside the DIV:
+        elmnt.onmousedown = dragMouseDown;
+      }
+
+      function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+      }
+
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // set the element's new position:
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+      }
+
+      function closeDragElement() {
+        // stop moving when mouse button is released:
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    }
+  </script>
+  </body>
+  </html>
